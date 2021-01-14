@@ -1,7 +1,5 @@
 package kotlinCode
 
-import java.lang.NumberFormatException
-
 fun main() {
     val d1 = Djur("Häst",4)
     val d2 = Djur("Myra",6)

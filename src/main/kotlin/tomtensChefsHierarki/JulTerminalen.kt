@@ -17,14 +17,13 @@ fun main() {
     while (true){
         print("Ange namn på en undersåta för att få en lista på alla dennes chefer eller avsluta med exit: ")
         try{
-            val name = readLine()!!.trim()
-            if(name.equals("exit",true)) exitProcess(1337)
-            println(getSubjects(name))
+            val name = readLine()
+            if(name.equals("exit",true) || name == null) exitProcess(1337)
+            println(getSubjects(name.trim()))
         }catch (e : Exception){
             println("Kunde ej tyda ert input...")
         }
     }
-
 }
 
 fun getSubjects(subject : String) : List<String> {

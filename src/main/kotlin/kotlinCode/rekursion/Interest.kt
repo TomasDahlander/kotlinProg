@@ -12,7 +12,7 @@ fun main() {
 
 fun accumulateInterestWithoutTail(startValue: Double, years: Int, interest: Double): Double{
     if(years == 0) return startValue
-    return Math.round(accumulateInterestWithoutTail((startValue * (interest+1)),years - 1,interest)*100)/100.0
+    return (accumulateInterestWithoutTail((startValue * (interest + 1)), years - 1, interest) * 100).roundToInt() /100.0
 }
 
 /**************************************************************************************************/
