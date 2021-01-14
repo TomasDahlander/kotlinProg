@@ -2,7 +2,7 @@ package tomtensChefsHierarki
 
 import kotlin.system.exitProcess
 
-val map = mapOf(
+val upMap = mapOf(
     "Bladlusen" to "Myran", "Myran" to "Räven",
     "Gråsuggan" to "Räven", "Dammråttan" to "Skumtomten",
     "Skumtomten" to "Trötter", "Räven" to "Butter",
@@ -15,7 +15,7 @@ val map = mapOf(
 fun main() {
 
     while (true){
-        print("Ange namn på en undersåta för att få en lista på alla dennes chefer eller avsluta med exit: ")
+        print("Ange namn på en undersåte för att få en lista på alla dennes chefer eller avsluta med exit: ")
         try{
             val name = readLine()
             if(name.equals("exit",true) || name == null) exitProcess(1337)
@@ -28,16 +28,16 @@ fun main() {
 
 fun getSubjects(subject : String) : List<String> {
 
-    fun getlist(subject: String, list: MutableList<String>): MutableList<String>{
+    fun getList(subject: String, list: MutableList<String>): MutableList<String>{
         try {
-            val boss = map.getValue(subject.substring(0, 1).toUpperCase() + subject.substring(1).toLowerCase())
+            val boss = upMap.getValue(subject.substring(0, 1).toUpperCase() + subject.substring(1).toLowerCase())
             list.add(boss)
-            return getlist(boss,list)
+            return getList(boss,list)
         }catch (e : Exception){
             return list
         }
     }
-    return getlist(subject,mutableListOf())
+    return getList(subject,mutableListOf())
 }
 
 /*
