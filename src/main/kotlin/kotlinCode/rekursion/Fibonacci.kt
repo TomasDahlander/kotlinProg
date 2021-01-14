@@ -2,7 +2,6 @@ package kotlinCode.rekursion
 
 fun main() {
     val a = getNrFromFibonacciIndex(6)
-
     println(a)
 }
 
