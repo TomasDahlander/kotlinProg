@@ -13,16 +13,10 @@ val upMap = mapOf(
 )
 
 fun main() {
-
-    while (true){
-        print("Ange namn på en undersåte för att få en lista på alla dennes chefer eller avsluta med exit: ")
-        try{
-            val name = readLine()
-            if(name.equals("exit",true) || name == null) exitProcess(1337)
-            println(getSubjects(name.trim()))
-        }catch (e : Exception){
-            println("Kunde ej tyda ert input...")
-        }
+    while (true) {
+        print("Ange namn på en undersåte för att få en lista på alla dennes chefer eller avsluta med ctrl-d: ")
+        val name = readLine() ?: exitProcess(1337)
+        println(getSubjects(name.trim()))
     }
 }
 

@@ -15,13 +15,12 @@ val downMap = mapOf(
 
 fun main() {
     while (true){
-        print("Ange namn på en chef för att få en lista på alla dennes undersåtar eller avsluta med exit: ")
-        try{
-            val name = readLine()
-            if(name.equals("exit",true) || name == null) exitProcess(1337)
+        print("Ange namn på en chef för att få en lista på alla dennes undersåtar eller avsluta med ctrl-d: ")
+        val name = readLine() ?: exitProcess(1337)
+        try {
             println(getEmployees(name.trim()))
-        }catch (e : Exception){
-            println("Kunde ej tyda ert input...")
+        }catch(e : Exception){
+            println("Finns ej i databasen...")
         }
     }
 }
