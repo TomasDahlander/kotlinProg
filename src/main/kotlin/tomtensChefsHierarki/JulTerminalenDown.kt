@@ -26,17 +26,18 @@ fun main() {
 }
 
 fun getEmployees(name: String):List<String>{
+    val list = mutableListOf<String>()
 
-    fun getBelowList(name: String,list: MutableList<String>,i: Int): MutableList<String>{
+    fun getBelowList(name: String,i: Int): MutableList<String>{
         try {
             val employeeList = downMap.getValue(name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase())
             list.addAll(employeeList)
-            return getBelowList(list[i],list,i+1)
+            return getBelowList(list[i],i+1)
         }catch (e : NoSuchElementException){
-            return getBelowList(list[i],list,i+1)
+            return getBelowList(list[i],i+1)
         }catch (e : IndexOutOfBoundsException){
             return list
         }
     }
-    return getBelowList(name, mutableListOf(),0)
+    return getBelowList(name, 0)
 }

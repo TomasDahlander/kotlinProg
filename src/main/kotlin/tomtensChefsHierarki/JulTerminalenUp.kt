@@ -21,15 +21,16 @@ fun main() {
 }
 
 fun getSubjects(subject : String) : List<String> {
+    val list = mutableListOf<String>()
 
-    fun getList(subject: String, list: MutableList<String>): MutableList<String>{
+    fun getList(subject: String): MutableList<String>{
         try {
             val boss = upMap.getValue(subject.substring(0, 1).toUpperCase() + subject.substring(1).toLowerCase())
             list.add(boss)
-            return getList(boss,list)
+            return getList(boss)
         }catch (e : Exception){
             return list
         }
     }
-    return getList(subject,mutableListOf())
+    return getList(subject)
 }
