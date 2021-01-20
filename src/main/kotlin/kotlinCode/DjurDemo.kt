@@ -1,5 +1,7 @@
 package kotlinCode
 
+import kotlin.math.max
+
 class Djur(sort : String, legs : Int){
     var amountOfLegs = legs
         get() {
@@ -36,8 +38,50 @@ val d9 = Djur("Katt",4)
 val d10 = Djur("Kängeru",2)
 
 fun main() {
+    val list = listOf(d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, Djur("Råtta", 4))
 
-    withList()
+//    println(getHighestAmountOfLegsOfAnAnimal(list))
+//    println(getTotalAmountOfLegs(list))
+//    println(getAmountOfAnimalWithFourOrMoreLegs(list))
+//    println(getDoubleListOfAnimals(list))
+}
+
+fun getHighestAmountOfLegsOfAnAnimal(list: List<Djur>) = list.map{it.amountOfLegs}.reduce{a,b -> max(a,b)}
+
+fun getTotalAmountOfLegs(list: List<Djur>) = list.map{it.amountOfLegs}.sum()
+
+fun getAmountOfAnimalWithFourOrMoreLegs(list: List<Djur>) = list.filter{it.amountOfLegs >= 4 }.count()
+
+fun getDoubleListOfAnimals(list: List<Djur>) = List(list.size*2){list[it % list.size]}
+
+
+/*
+6h Skriv en funktion som fördubblar antalet djur i den lista den returnerar
+(kräver ingen
+ */
+
+fun checkIfListContainsAnimal(animal: String, list: List<Djur>) = list.any{d -> d.sort.equals(animal,true)}
+
+fun getListWithout(animal: String, list: List<Djur>): List<Djur>{
+    return list.filterNot {it.sort.equals(animal,true) }
+}
+
+fun printWithIndex(list: List<Djur>){
+    println(list.mapIndexed{i,d -> "$i. $d"})
+    println()
+    println(list.mapIndexed{i,_ -> "$i"})
+}
+
+fun printAnimalsWithSeparator(list: List<Djur>){
+    println(list.joinToString(separator = " - ") {it.sort.toUpperCase()})
+    println(list.joinToString(separator = " | ", transform = {it.sort.toLowerCase()}))
+}
+
+fun getListOfFrogs(list: List<Djur>) = list.map { Djur("Groda",4) }
+
+fun printListWithLambda(){
+    val list = listOf(d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,Djur("Råtta",4))
+    list.forEach{it.printSort()}
 }
 
 fun withList(){
