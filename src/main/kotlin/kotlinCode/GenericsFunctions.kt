@@ -1,6 +1,6 @@
 package kotlinCode
 
-private fun <T> List<T>.filter(predicate: (T) -> Boolean):List<T>{
+private fun <T> List<T>.myFilter(predicate: (T) -> Boolean):List<T>{
     val list = mutableListOf<T>()
     for(element in this){
         if(predicate(element)) list.add(element)
@@ -8,8 +8,16 @@ private fun <T> List<T>.filter(predicate: (T) -> Boolean):List<T>{
     return list
 }
 
-private fun <T,R> List<T>.map(function: (T) -> R): List<R>{
-    val list = mutableListOf<R>()
+private fun <T> List<T>.myFilterAway(predicate: (T) -> Boolean):List<T>{
+    val list = mutableListOf<T>()
+    for(element in this){
+        if(!predicate(element)) list.add(element)
+    }
+    return list
+}
+
+private fun <T,E> List<T>.myMap(function: (T) -> E): List<E>{
+    val list = mutableListOf<E>()
     for(element in this){
         list.add(function(element))
     }
@@ -17,17 +25,26 @@ private fun <T,R> List<T>.map(function: (T) -> R): List<R>{
 }
 
 fun main() {
-
     val animals = listOf(d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, Djur("Råtta", 4))
     val ints = listOf(1,2,3,4,5,6,7,8,9,10)
     val strings = listOf("arne","bengt","clas","david","erik","filip","gustav")
 
-    println(ints.filter { it % 2 == 0 })
-    println(strings.filter { it.length > 4 })
-    println(animals.filter { it.amountOfLegs > 4 })
+    println(strings.myFilter { it.length > 4 })
+    println(animals.myFilter { it.amountOfLegs > 4 })
+    println(ints.myFilter { it % 2 == 0 })
+    println(ints.myFilterAway { it % 2 == 0 })
 
-    println(animals.map {l -> l.amountOfLegs})
-    println(animals.map {l -> l.sort})
+    println(animals.myMap {l -> l.amountOfLegs})
+    println(animals.myMap {l -> l.sort})
+    println(strings.myMap {l -> l.length})
+
+    val x = strings.myMap {it.length}
+
+    println("Bör bli 9: ${x[0] + x[1]}")
+
+    println(strings.myMap { it.length }.sum())
+    println(strings.myMap { it.length }.average())
+
 }
 
 

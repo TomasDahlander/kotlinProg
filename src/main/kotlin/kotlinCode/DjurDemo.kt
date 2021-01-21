@@ -40,19 +40,19 @@ val d10 = Djur("Kängeru",2)
 fun main() {
     val list = listOf(d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, Djur("Råtta", 4))
 
-//    println(getHighestAmountOfLegsOfAnAnimal(list))
-//    println(getTotalAmountOfLegs(list))
-//    println(getAmountOfAnimalWithFourOrMoreLegs(list))
-//    println(getDoubleListOfAnimals(list))
+    println(getHighestAmountOfLegsOfAnAnimal(list))
+    println(getTotalAmountOfLegs(list))
+    println(getAmountOfAnimalWithFourOrMoreLegs(list))
+    println(getDoubleListOfAnimals(list))
 }
 
-fun getHighestAmountOfLegsOfAnAnimal(list: List<Djur>) = list.map{it.amountOfLegs}.reduce{a,b -> max(a,b)}
+private fun getHighestAmountOfLegsOfAnAnimal(list: List<Djur>) = list.map{it.amountOfLegs}.reduce{a,b -> max(a,b)}
 
-fun getTotalAmountOfLegs(list: List<Djur>) = list.map{it.amountOfLegs}.sum()
+private fun getTotalAmountOfLegs(list: List<Djur>) = list.map{it.amountOfLegs}.sum()
 
-fun getAmountOfAnimalWithFourOrMoreLegs(list: List<Djur>) = list.filter{it.amountOfLegs >= 4 }.count()
+private fun getAmountOfAnimalWithFourOrMoreLegs(list: List<Djur>) = list.filter{it.amountOfLegs >= 4 }.count()
 
-fun getDoubleListOfAnimals(list: List<Djur>) = List(list.size*2){list[it % list.size]}
+private fun getDoubleListOfAnimals(list: List<Djur>) = List(list.size*2){list[it % list.size]}
 
 
 /*
@@ -60,31 +60,31 @@ fun getDoubleListOfAnimals(list: List<Djur>) = List(list.size*2){list[it % list.
 (kräver ingen
  */
 
-fun checkIfListContainsAnimal(animal: String, list: List<Djur>) = list.any{d -> d.sort.equals(animal,true)}
+private fun checkIfListContainsAnimal(animal: String, list: List<Djur>) = list.any{d -> d.sort.equals(animal,true)}
 
-fun getListWithout(animal: String, list: List<Djur>): List<Djur>{
+private fun getListWithout(animal: String, list: List<Djur>): List<Djur>{
     return list.filterNot {it.sort.equals(animal,true) }
 }
 
-fun printWithIndex(list: List<Djur>){
+private fun printWithIndex(list: List<Djur>){
     println(list.mapIndexed{i,d -> "$i. $d"})
     println()
     println(list.mapIndexed{i,_ -> "$i"})
 }
 
-fun printAnimalsWithSeparator(list: List<Djur>){
+private fun printAnimalsWithSeparator(list: List<Djur>){
     println(list.joinToString(separator = " - ") {it.sort.toUpperCase()})
     println(list.joinToString(separator = " | ", transform = {it.sort.toLowerCase()}))
 }
 
-fun getListOfFrogs(list: List<Djur>) = list.map { Djur("Groda",4) }
+private fun getListOfFrogs(list: List<Djur>) = list.map { Djur("Groda",4) }
 
-fun printListWithLambda(){
+private fun printListWithLambda(){
     val list = listOf(d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,Djur("Råtta",4))
     list.forEach{it.printSort()}
 }
 
-fun withList(){
+private fun withList(){
     val list = listOf(d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,Djur("Råtta",4))
 
 //    list.forEach { e -> e.printAllInfo() }
@@ -103,7 +103,7 @@ Skapa en funktion som tar ett Djur som inparameter
 •Använd en When sats
  */
 
-fun withSet(){
+private fun withSet(){
     val set1 = setOf(d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d1,d2,d3)
     val set2 = setOf(d2,d1,d4,d3,d6,d5,d8,d7,d10,d9)
 
@@ -114,7 +114,7 @@ fun withSet(){
     println(set1.equals(set2))
 }
 
-fun withMap(){
+private fun withMap(){
     val map1 = mapOf(
         "häst" to d1,
         "myra" to d2,
