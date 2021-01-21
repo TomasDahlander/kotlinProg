@@ -1,29 +1,5 @@
 package kotlinCode
 
-private fun <T> List<T>.myFilter(predicate: (T) -> Boolean):List<T>{
-    val list = mutableListOf<T>()
-    for(element in this){
-        if(predicate(element)) list.add(element)
-    }
-    return list
-}
-
-private fun <T> List<T>.myFilterAway(predicate: (T) -> Boolean):List<T>{
-    val list = mutableListOf<T>()
-    for(element in this){
-        if(!predicate(element)) list.add(element)
-    }
-    return list
-}
-
-private fun <T,E> List<T>.myMap(function: (T) -> E): List<E>{
-    val list = mutableListOf<E>()
-    for(element in this){
-        list.add(function(element))
-    }
-    return list
-}
-
 fun main() {
     val animals = listOf(d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, Animal("Råtta", 4))
     val ints = listOf(1,2,3,4,5,6,7,8,9,10)
@@ -50,7 +26,29 @@ fun main() {
 
 }
 
+private fun <T> List<T>.myFilter(predicate: (T) -> Boolean):List<T>{
+    val list = mutableListOf<T>()
+    for(element in this){
+        if(predicate(element)) list.add(element)
+    }
+    return list
+}
 
+private fun <T> List<T>.myFilterAway(predicate: (T) -> Boolean):List<T>{
+    val list = mutableListOf<T>()
+    for(element in this){
+        if(!predicate(element)) list.add(element)
+    }
+    return list
+}
+
+private fun <T,E> List<T>.myMap(function: (T) -> E): List<E>{
+    val list = mutableListOf<E>()
+    for(element in this){
+        list.add(function(element))
+    }
+    return list
+}
 
 /*
 fun <T> List<T>.any(predicate: (T) -> Boolean): Boolean {
