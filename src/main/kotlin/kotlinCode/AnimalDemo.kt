@@ -2,7 +2,7 @@ package kotlinCode
 
 import kotlin.math.max
 
-class Djur(sort : String, legs : Int){
+class Animal(sort : String, legs : Int){
     var amountOfLegs = legs
         get() {
             return field
@@ -26,19 +26,19 @@ class Djur(sort : String, legs : Int){
     fun getAllInfo() = "$sort med $amountOfLegs antal ben"
 }
 
-val d1 = Djur("Häst",4)
-val d2 = Djur("Myra",6)
-val d3 = Djur("Spindel",8)
-val d4 = Djur("Apa",2)
-val d5 = Djur("Hamster",4)
-val d6 = Djur("Orm",1)
-val d7 = Djur("Bläckfisk",8)
-val d8 = Djur("Hund",4)
-val d9 = Djur("Katt",4)
-val d10 = Djur("Kängeru",2)
+val d1 = Animal("Häst",4)
+val d2 = Animal("Myra",6)
+val d3 = Animal("Spindel",8)
+val d4 = Animal("Apa",2)
+val d5 = Animal("Hamster",4)
+val d6 = Animal("Orm",1)
+val d7 = Animal("Bläckfisk",8)
+val d8 = Animal("Hund",4)
+val d9 = Animal("Katt",4)
+val d10 = Animal("Kängeru",2)
 
 fun main() {
-    val list = listOf(d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, Djur("Råtta", 4))
+    val list = listOf(d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, Animal("Råtta", 4))
 
     println(getHighestAmountOfLegsOfAnAnimal(list))
     println(getTotalAmountOfLegs(list))
@@ -46,13 +46,13 @@ fun main() {
     println(getDoubleListOfAnimals(list))
 }
 
-private fun getHighestAmountOfLegsOfAnAnimal(list: List<Djur>) = list.map{it.amountOfLegs}.reduce{a,b -> max(a,b)}
+private fun getHighestAmountOfLegsOfAnAnimal(list: List<Animal>) = list.map{it.amountOfLegs}.reduce{ a, b -> max(a,b)}
 
-private fun getTotalAmountOfLegs(list: List<Djur>) = list.map{it.amountOfLegs}.sum()
+private fun getTotalAmountOfLegs(list: List<Animal>) = list.map{it.amountOfLegs}.sum()
 
-private fun getAmountOfAnimalWithFourOrMoreLegs(list: List<Djur>) = list.filter{it.amountOfLegs >= 4 }.count()
+private fun getAmountOfAnimalWithFourOrMoreLegs(list: List<Animal>) = list.filter{it.amountOfLegs >= 4 }.count()
 
-private fun getDoubleListOfAnimals(list: List<Djur>) = List(list.size*2){list[it % list.size]}
+private fun getDoubleListOfAnimals(list: List<Animal>) = List(list.size*2){list[it % list.size]}
 
 
 /*
@@ -60,32 +60,32 @@ private fun getDoubleListOfAnimals(list: List<Djur>) = List(list.size*2){list[it
 (kräver ingen
  */
 
-private fun checkIfListContainsAnimal(animal: String, list: List<Djur>) = list.any{d -> d.sort.equals(animal,true)}
+private fun checkIfListContainsAnimal(animal: String, list: List<Animal>) = list.any{ d -> d.sort.equals(animal,true)}
 
-private fun getListWithout(animal: String, list: List<Djur>): List<Djur>{
+private fun getListWithout(animal: String, list: List<Animal>): List<Animal>{
     return list.filterNot {it.sort.equals(animal,true) }
 }
 
-private fun printWithIndex(list: List<Djur>){
+private fun printWithIndex(list: List<Animal>){
     println(list.mapIndexed{i,d -> "$i. $d"})
     println()
     println(list.mapIndexed{i,_ -> "$i"})
 }
 
-private fun printAnimalsWithSeparator(list: List<Djur>){
+private fun printAnimalsWithSeparator(list: List<Animal>){
     println(list.joinToString(separator = " - ") {it.sort.toUpperCase()})
     println(list.joinToString(separator = " | ", transform = {it.sort.toLowerCase()}))
 }
 
-private fun getListOfFrogs(list: List<Djur>) = list.map { Djur("Groda",4) }
+private fun getListOfFrogs(list: List<Animal>) = list.map { Animal("Groda",4) }
 
 private fun printListWithLambda(){
-    val list = listOf(d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,Djur("Råtta",4))
+    val list = listOf(d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,Animal("Råtta",4))
     list.forEach{it.printSort()}
 }
 
 private fun withList(){
-    val list = listOf(d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,Djur("Råtta",4))
+    val list = listOf(d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,Animal("Råtta",4))
 
 //    list.forEach { e -> e.printAllInfo() }
 //    println()

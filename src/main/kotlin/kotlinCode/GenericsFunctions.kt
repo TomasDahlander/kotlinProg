@@ -25,7 +25,7 @@ private fun <T,E> List<T>.myMap(function: (T) -> E): List<E>{
 }
 
 fun main() {
-    val animals = listOf(d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, Djur("Råtta", 4))
+    val animals = listOf(d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, Animal("Råtta", 4))
     val ints = listOf(1,2,3,4,5,6,7,8,9,10)
     val strings = listOf("arne","bengt","clas","david","erik","filip","gustav")
 
@@ -44,6 +44,9 @@ fun main() {
 
     println(strings.myMap { it.length }.sum())
     println(strings.myMap { it.length }.average())
+
+    val z = ints.myFilterAway { it == 2 || it == 3 }.myFilterAway { it == 4 }
+    println(z)
 
 }
 

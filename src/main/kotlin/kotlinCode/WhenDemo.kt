@@ -1,16 +1,16 @@
 package kotlinCode
 
 fun main() {
-    val d1 = Djur("Häst",4)
-    val d2 = Djur("Myra",6)
-    val d3 = Djur("Spindel",8)
-    val d4 = Djur("Apa",2)
-    val d5 = Djur("Hamster",4)
-    val d6 = Djur("Orm",1)
-    val d7 = Djur("Bläckfisk",8)
-    val d8 = Djur("Hund",4)
-    val d9 = Djur("Katt",4)
-    val d10 = Djur("Kängeru",2)
+    val d1 = Animal("Häst",4)
+    val d2 = Animal("Myra",6)
+    val d3 = Animal("Spindel",8)
+    val d4 = Animal("Apa",2)
+    val d5 = Animal("Hamster",4)
+    val d6 = Animal("Orm",1)
+    val d7 = Animal("Bläckfisk",8)
+    val d8 = Animal("Hund",4)
+    val d9 = Animal("Katt",4)
+    val d10 = Animal("Kängeru",2)
 
     val list = listOf(d1,d2,d3,d4,d5,d6,d7,d8,d9,d10)
 
@@ -24,7 +24,7 @@ fun main() {
     }
 }
 
-fun printSound(animal : Djur){
+fun printSound(animal : Animal){
     when (animal.sort){
         "Hund" -> println(animal.sort + " says Woof!")
         "Katt" -> println(animal.sort + " says Meow")
